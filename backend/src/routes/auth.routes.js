@@ -23,9 +23,15 @@ authRouter.post("/login", login);
 authRouter.post("/logout", userMiddleware, logout);
 
 authRouter.get("/check", userMiddleware, (req, res) => {
+    const reply = {
+        firstName: req.user.firstName,
+        emailId: req.user.emailId,
+        _id:req.user._id,
+        role:req.user.role,
+    }
 
     res.status(200).json({
-        user: req.user,
+        user: reply,
         message: "Valid User"
     });
 

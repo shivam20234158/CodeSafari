@@ -4,6 +4,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import authRouter from "./routes/auth.routes.js";
+import problemRouter from "./routes/problem.routes.js";
+import submissionRouter from "./routes/submission.routes.js";
 dotenv.config();
 
 const app = express();
@@ -25,6 +27,8 @@ app.use(
     })
 );
 app.use("/api/auth",authRouter)
+app.use("/api/problems",problemRouter)
+app.use("/api/submissions", submissionRouter);
 
 app.get("/", (req, res) => {
     res.send("Backend is Running 🚀");
